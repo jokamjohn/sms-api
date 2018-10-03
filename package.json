@@ -1,0 +1,23 @@
+{
+  "name": "sms",
+  "version": "1.0.0",
+  "description": "SMS management application",
+  "main": "app.js",
+  "repository": "https://github.com/jokamjohn/sms-api.git",
+  "author": "johnkagga <johnkagga@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon app.js",
+    "migrate": "sequelize db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-morgan": "^1.0.1",
+    "pg": "^7.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.39.0"
+  }
+}
