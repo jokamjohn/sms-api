@@ -5,6 +5,7 @@ const Koa = require('koa');
 const app = new Koa();
 const koaBody = require('koa-body');
 const logger = require('koa-morgan');
+const router = require('./routes/index');
 
 const port = process.env.PORT || 5000;
 
@@ -14,11 +15,9 @@ app.use(koaBody());
 const accessLogStream = fs.createWriteStream(__dirname + '/access.log', { flags: 'a' });
 
 // setup the logger
-app.use(logger('combined', { stream: accessLogStream }))
+app.use(logger('combined', { stream: accessLogStream }));
 
-app.use(async ctx => {
-  ctx.body = 'Hello World';
-});
+app.use(router.routes());
 
 
 
