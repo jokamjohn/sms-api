@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-  }, {
     status: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false
     }
-  },
-      {});
+  }, {});
   Message.associate = function(models) {
     Message.belongsTo(models.Contact, {
         as: 'sender',
