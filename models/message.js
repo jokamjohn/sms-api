@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        lens: {
+        len: {
           args: [5, 140],
           msg: "Message content must be between 5 to 140 characters"
         }

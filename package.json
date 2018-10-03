@@ -13,9 +13,11 @@
   },
   "dependencies": {
     "dotenv": "^6.0.0",
+    "joi": "^13.7.0",
     "koa": "^2.5.3",
     "koa-body": "^4.0.4",
     "koa-morgan": "^1.0.1",
+    "koa-router": "^7.4.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.39.0"
