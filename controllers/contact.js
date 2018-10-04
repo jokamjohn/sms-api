@@ -79,7 +79,6 @@ class ContactController {
         message: `An error occured ${error.message}`
       }
     }
-
   }
 }
 
