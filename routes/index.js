@@ -8,6 +8,8 @@ const router = new Router({
 const ContactController = require('../controllers/contact');
 const MessageController = require('../controllers/message');
 
+router.get('/:contactId/received/sms', MessageController.listReceivedMessages);
+
 router.post('/', ContactController.createContact);
 
 router.post('/:contactId/sms', MessageController.createMessage);

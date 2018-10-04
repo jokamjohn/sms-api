@@ -45,6 +45,37 @@ class MessageController {
       }
     }
   }
+
+  static async listReceivedMessages(ctx) {
+    const contactId = ctx.params.contactId;
+    if (!contactId) {
+      ctx.status = 400;
+      return ctx.body = {
+        status: 'failed',
+        message: 'Provide a contact Id'
+      }
+    }
+
+    try {
+      const messages = await Message.findAll({
+        where: {
+          receiverId: contactId
+        }
+      });
+      ctx.status = 200;
+      return ctx.body = {
+        status: 'success',
+        data: messages,
+        message: `Successfully returned messages received by ${contactId}`
+      }
+    } catch (error) {
+      ctx.status = 400;
+      return ctx.body = {
+        status: 'failed',
+        message: 'Failed '
+      }
+    }
+  }
 }
 
 module.exports = MessageController;
