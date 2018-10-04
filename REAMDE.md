@@ -32,6 +32,44 @@ To create a contact send a payload to the endpoint below.
     }
 ```
 
+## List all contacts
+Use the endpoint below to get a list of all the contacts in the system.
+
+```angular2html
+    /api/v1/contacts
+```
+
+**Response:**
+
+```angular2html
+    {
+        "status": "success",
+        "data": [
+            {
+                "id": 1,
+                "name": "John",
+                "phoneNumber": "0789525579",
+                "createdAt": "2018-10-03T09:46:55.416Z",
+                "updatedAt": "2018-10-03T09:46:55.416Z"
+            },
+            {
+                "id": 3,
+                "name": "Kagga",
+                "phoneNumber": "0789525592",
+                "createdAt": "2018-10-03T18:35:22.387Z",
+                "updatedAt": "2018-10-03T18:35:22.387Z"
+            },
+            {
+                "id": 4,
+                "name": "Mary",
+                "phoneNumber": "0789525591",
+                "createdAt": "2018-10-03T18:47:12.255Z",
+                "updatedAt": "2018-10-03T18:47:12.255Z"
+            }
+        ]
+    }
+```
+
 ### Sending/Creating a message
 This is the endpoint for sending a message where `contactId` is the contact Id
 ```angular2html

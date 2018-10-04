@@ -37,6 +37,15 @@ class ContactController {
     }
   }
 
+  static async listContacts (ctx) {
+    const contacts = await Contact.findAll();
+    ctx.status = 200;
+    return ctx.body = {
+      status: 'success',
+      data: contacts
+    }
+  }
+
   static async deleteContact(ctx) {
     const contactId = ctx.params.contactId;
     if (!contactId) {
