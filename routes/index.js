@@ -10,6 +10,8 @@ const MessageController = require('../controllers/message');
 
 router.get('/:contactId/received/sms', MessageController.listReceivedMessages);
 
+router.get('/:contactId/sent/sms', MessageController.listSentMessages);
+
 router.get('/', ContactController.listContacts);
 
 router.post('/', ContactController.createContact);
