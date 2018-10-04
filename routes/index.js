@@ -12,4 +12,6 @@ router.post('/', ContactController.createContact);
 
 router.post('/:contactId/sms', MessageController.createMessage);
 
+router.delete('/:contactId', ContactController.deleteContact);
+
 module.exports = router;
