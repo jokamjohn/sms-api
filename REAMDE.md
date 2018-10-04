@@ -122,3 +122,74 @@ Send a `Delete` request with the `contactId` to the endpoint below.
         "message": "Contact has been deleted together with all the messages it references"
     }
 ```
+## List messages sent by a contact
+Send a `GET` request to the endpoint below
+
+```angular2html
+    /api/v1/contacts/:contactId/sent/sms
+```
+
+**Response:**
+
+```angular2html
+    {
+        "status": "success",
+        "data": [
+            {
+                "id": 7,
+                "text": "Yo man tomorrow",
+                "status": true,
+                "createdAt": "2018-10-04T12:46:45.593Z",
+                "updatedAt": "2018-10-04T12:46:45.593Z",
+                "senderId": 3,
+                "receiverId": 1
+            },
+            {
+                "id": 8,
+                "text": "Go away",
+                "status": true,
+                "createdAt": "2018-10-04T12:46:54.890Z",
+                "updatedAt": "2018-10-04T12:46:54.890Z",
+                "senderId": 3,
+                "receiverId": 1
+            }
+        ],
+        "message": "Successfully returned messages sent by a contact with Id 3"
+    }
+```
+
+## List all received messages 
+Send a `GET` request to the endpoint below
+
+```angular2html
+    /api/v1/contacts/:contactId/received/sms
+``` 
+
+**Response:**
+
+```angular2html
+    {
+        "status": "success",
+        "data": [
+            {
+                "id": 5,
+                "text": "come home tomorrow",
+                "status": true,
+                "createdAt": "2018-10-04T09:48:22.626Z",
+                "updatedAt": "2018-10-04T09:48:22.626Z",
+                "senderId": 4,
+                "receiverId": 1
+            },
+            {
+                "id": 6,
+                "text": "Yo man tomorrow",
+                "status": true,
+                "createdAt": "2018-10-04T09:48:38.827Z",
+                "updatedAt": "2018-10-04T09:48:38.827Z",
+                "senderId": 4,
+                "receiverId": 1
+            }
+        ],
+        "message": "Successfully returned messages received by 1"
+    }
+```

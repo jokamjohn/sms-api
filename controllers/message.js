@@ -66,13 +66,44 @@ class MessageController {
       return ctx.body = {
         status: 'success',
         data: messages,
-        message: `Successfully returned messages received by ${contactId}`
+        message: `Successfully returned messages received by a contact with Id ${contactId}`
       }
     } catch (error) {
       ctx.status = 400;
       return ctx.body = {
         status: 'failed',
-        message: 'Failed '
+        message: `Failed to retrieve messages ${error.message}`
+      }
+    }
+  }
+
+  static async listSentMessages(ctx) {
+    const contactId = ctx.params.contactId;
+    if (!contactId) {
+      ctx.status = 400;
+      return ctx.body = {
+        status: 'failed',
+        message: 'Provide a contact Id'
+      }
+    }
+
+    try {
+      const messages = await Message.findAll({
+        where: {
+          senderId: contactId
+        }
+      });
+      ctx.status = 200;
+      return ctx.body = {
+        status: 'success',
+        data: messages,
+        message: `Successfully returned messages sent by a contact with Id ${contactId}`
+      }
+    } catch (error) {
+      ctx.status = 400;
+      return ctx.body = {
+        status: 'failed',
+        message: `Failed to retrieve messages ${error.message}`
       }
     }
   }
