@@ -30,7 +30,7 @@ class MessageController {
         message: 'Message sent successfully'
       }
     } catch (err) {
-      ctx.status = 400;
+      ctx.status = 500;
       switch (err.name) {
         case 'SequelizeForeignKeyConstraintError':
           return ctx.body = {
@@ -69,7 +69,7 @@ class MessageController {
         message: `Successfully returned messages received by a contact with Id ${contactId}`
       }
     } catch (error) {
-      ctx.status = 400;
+      ctx.status = 500;
       return ctx.body = {
         status: 'failed',
         message: `Failed to retrieve messages ${error.message}`
@@ -100,10 +100,51 @@ class MessageController {
         message: `Successfully returned messages sent by a contact with Id ${contactId}`
       }
     } catch (error) {
-      ctx.status = 400;
+      ctx.status = 500;
       return ctx.body = {
         status: 'failed',
         message: `Failed to retrieve messages ${error.message}`
+      }
+    }
+  }
+
+  static async deleteMessage(ctx) {
+    const contactId = ctx.params.contactId;
+    const messageId = ctx.params.messageId;
+
+    if (!contactId && messageId) {
+      ctx.status = 400;
+      return ctx.body = {
+        status: 'failed',
+        message: 'Contact Id or message Id is missing'
+      }
+    }
+
+    try {
+      const message = await Message.find({
+        where: {
+          id: messageId,
+          senderId: contactId
+        }
+      });
+      if (!message) {
+        ctx.status = 404;
+        return ctx.body = {
+          status: 'failed',
+          message: 'Could not find the message'
+        }
+      }
+      await message.destroy();
+      ctx.status = 200;
+      return ctx.body = {
+        status: 'success',
+        message: 'Message deleted successfully'
+      }
+    } catch (error) {
+      ctx.status = 500;
+      return ctx.body = {
+        status: 'failed',
+        message: `An error occurred while deleting the message ${error.message}`
       }
     }
   }

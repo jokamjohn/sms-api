@@ -1,6 +1,15 @@
 # SMS Management Application API
 
-## Usage
+## Installation
+- Clone the repo onto your machine
+- Rename `.env.example` to `.env`
+- Create a postgres database and add it url in the `.env` file
+- Run the database migrations with the `yarn migrate` command
+- Run `yarn start` to start the application.
+
+## Documentation
+
+Below is the API document. You can also find it [here](https://documenter.getpostman.com/view/86315/RWgnWf9K) in a postman collection.
 
 ### Creating a contact
 To create a contact send a payload to the endpoint below.
@@ -191,5 +200,22 @@ Send a `GET` request to the endpoint below
             }
         ],
         "message": "Successfully returned messages received by 1"
+    }
+```
+
+## Delete message
+
+Send a `DELETE` request to the endpoint below
+
+```angular2html
+    /api/v1/contacts/:contactId/sms/:messageId
+```
+
+**Response:**
+
+```angular2html
+    {
+        "status": "success",
+        "message": "Message deleted successfully"
     }
 ```
