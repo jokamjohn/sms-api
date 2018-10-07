@@ -19,5 +19,8 @@ app.use(logger('combined', { stream: accessLogStream }));
 
 app.use(router.routes());
 
-app.listen(port, console.log(`app running on port ${port}`));
+//start app
+const server = app.listen(port, console.log(`app running on port ${port}`));
+
+module.exports = server;
 
