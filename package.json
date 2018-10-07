@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "migrate": "sequelize db:migrate",
-    "test": "export DATABASE_URL=postgresql://localhost/sms_test && export NODE_ENV=test && jest --detectOpenHandles --runInBand --forceExit"
+    "test": "export DATABASE_URL=postgresql://localhost/sms_test && export NODE_ENV=test &&  yarn migrate &&jest --detectOpenHandles --runInBand --forceExit"
   },
   "dependencies": {
     "dotenv": "^6.0.0",
@@ -19,6 +19,7 @@
     "koa-body": "^4.0.4",
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.4.0",
+    "lodash": "^4.17.11",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.39.0"
